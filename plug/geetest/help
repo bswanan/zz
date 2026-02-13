@@ -1,0 +1,31 @@
+部署简介
+ps：请注意修改配置文件密钥
+1.将本目录下geetest_xxx.php引入到所需验证页面（_index.php为主目录可引用/_admin.php为admin目录可引用/如有其他目录请新建geetest_xxx.php并修改绝对目录）
+2.将一下代码复制到验证标签显示的地方
+<div id="embed-captcha"></div>
+<p id="wait" class="show">正在加载验证码......</p>
+<p id="notice" class="hide">请先完成验证</p>
+
+3.<!-- 修改或添加from表单action属性action="../web/VerifyLoginServlet.php"（注意要是绝对链接）#暂时无用#-->  在from表单提交按钮添加 id="fabubtn" （也可打开该文件进行更改）
+
+表单实例
+<form class="popup" action="../web/VerifyLoginServlet.php" method="post">
+    <h2>嵌入式Demo，使用表单形式提交二次验证所需的验证结果值</h2>
+    <br>
+    <p>
+        <label for="username2">用户名：</label>
+        <input class="inp" id="username2" type="text" value="极验验证">
+    </p>
+    <br>
+    <p>
+        <label for="password2">密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
+        <input class="inp" id="password2" type="password" value="123456">
+    </p>
+
+    <div id="embed-captcha"></div>
+    <p id="wait" class="show">正在加载验证码......</p>
+    <p id="notice" class="hide">请先完成验证</p>
+
+    <br>
+    <input class="btn" id="embed-submit" type="submit" value="提交">//提交按钮
+</form>

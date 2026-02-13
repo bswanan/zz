@@ -1,0 +1,328 @@
+<!DOCTYPE html><html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Q绑查询系统API文档</title>
+	<meta name="description" content="Q绑查询系统">
+	<meta name="Keywords" content="Q绑查询系统">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link type="text/css" rel="stylesheet" href="http://fulimcp.cn/css/style.css" media="all">
+	<script type="text/javascript" src="https://js.users.51.la/21020775.js"></script>
+	<script src="//lib.baomitu.com/layer/3.1.1/layer.js"></script><link rel="stylesheet" href="http://lib.baomitu.com/layer/3.1.1/theme/default/layer.css?v=3.1.1" id="layuicss-layer">
+	<style>
+		.my_config_info {
+			width: 100%;
+			background-color: #fcfcfc;
+			border: 1px solid #E4E7ED;
+			border-radius: 4px;
+			box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.06);
+			padding: 15px 20px 15px 10px;
+			margin: 0 0 20px 0;
+			position: relative;
+		}
+
+		.my_config_info h5 {
+			font-size: 16px;
+			color: #333;
+			line-height: 1.5;
+			margin-bottom: 5px;
+		}
+
+		.my_config_info p {
+			font-size: 15px;
+			color: #666;
+			line-height: 2.4;
+		}
+
+		.loginTips {
+			text-align: center;
+			background-color: rgba(138, 138, 138, 0.2);
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		.loginTips a {
+			display: inline-block;
+			vertical-align: middle;
+			font-size: 16px;
+			font-weight: bold;
+			color: #015792;
+			letter-spacing: 1px;
+			text-decoration: underline;
+		}
+
+		.loginTips:after {
+			content: "";
+			font-size: 0;
+			display: inline-block;
+			vertical-align: middle;
+			height: 100%;
+		}
+
+		.apiReq {
+			padding-left: 2px;
+			margin-bottom: 20px;
+		}
+
+		.apiReq h6 {
+			font-size: 16px;
+			font-weight: normal;
+			color: #333;
+			margin-bottom: 10px;
+		}
+
+		.apiReq p {
+			font-size: 14px;
+			line-height: 1.5;
+			color: #333;
+		}
+
+		.apiPar {
+			margin-top: 20px;
+			padding-left: 2px;
+		}
+
+		.apiPar h6 {
+			font-size: 16px;
+			font-weight: normal;
+			color: #333;
+			margin-bottom: 8px;
+		}
+
+		.apiPar table {
+			width: 100%;
+			border-spacing: 0;
+			border-collapse: collapse;
+		}
+
+		.apiPar table>thead>tr>th {
+			font-size: 14px;
+			font-weight: normal;
+			color: #333;
+			text-align: left;
+			background-color: #f5f5f5;
+			border-bottom: 1px solid #e8e8e8;
+			padding: 16px;
+		}
+
+		.apiPar table>tbody>tr>td {
+			font-size: 14px;
+			color: rgba(0, 0, 0, 0.65);
+			padding: 8px;
+			vertical-align: top;
+			border-bottom: 1px solid #e8e8e8;
+			padding: 16px 16px;
+			word-break: break-word;
+		}
+
+		.apiPar table>tbody>tr:hover>td {
+			background: #e6f7ff;
+		}
+
+		.section_title {
+			font-size: 16px;
+			color: #333;
+			margin-top: 25px;
+			padding-left: 3px;
+			position: relative;
+			bottom: -10px;
+		}
+
+		.section {
+			margin-top: 30px;
+		}
+
+		.pre_tit {
+			font-size: 16px;
+			font-weight: 500;
+			color: #333;
+			padding-left: 3px;
+		}
+
+		pre {
+			font-size: 0;
+			line-height: 1;
+			word-break: break-all;
+			word-wrap: break-word;
+			background-color: #FFF;
+			border: 1px solid #E4E7ED;
+			border-radius: 4px;
+			box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.06);
+			padding: 18px;
+			margin-top: 13px;
+		}
+
+		code {
+			font-family: Arial, Microsoft YaHei, SimSun, PingFangSC;
+			line-height: 2;
+			font-size: 14px;
+			color: #666;
+			white-space: pre-wrap;
+		}
+
+		a.btn-look {
+			color: #fff;
+			background-color: #1890ff;
+			border-color: #1890ff;
+			padding: 0 7px;
+			font-size: 14px;
+			border: none;
+			cursor: pointer;
+			margin-left: 15px;
+			text-decoration: none;
+			line-height: 26px;
+			display: inline-block;
+		}
+
+		button.btn-look:hover {
+			opacity: 0.8;
+		}
+
+		div[id^="_"] {
+			display: none !important;
+		}
+	</style>
+<script src="//lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+function tips(){
+    layer.alert('亲爱的访客，你好！欢迎查看api文档。本站查绑api完全开放，欢迎赞助我们！本文档已经不能再详细了，请不要打扰我们。免费的东西没有售后！', {
+  icon: 1,
+  title: '小提示',
+  skin: 'layer-ext-moon'
+})
+}
+</script>
+</head>
+
+<body>
+	<header id="header">
+		<center>
+			<font color="#5555FF">
+				<h2><b>Q绑查询系统API文档</b></h2>
+			</font>
+		</center>
+	</header>
+	<div class="main" style="padding-top: 15px;">
+		<div class="main_pack w1024 container-fluid">
+			<div class="my_config_info">
+				<h5>Q绑QQ查询接口</h5>
+
+				<p>普通文本回调接口：<span style="margin-left:10px;color:#f33;" id="url1">http://api.tzact.com/qb-api.php?method=text&mod=cha&qq=你的QQ</span>
+				</p>
+				<p>JSON格式回调接口：<span style="margin-left:10px;color:#f33;" id="url2">http://api.tzact.com/qb-api.php?mod=cha&qq=你的QQ</span>
+				</p>
+			</div>
+
+			<div class="apiReq">
+				<h6>请求方式</h6>
+				<p>只能GET</p>
+			</div>
+			<div class="apiPar">
+				<h6>输入参数字段</h6>
+				<table class="table">
+					<thead>
+						<tr class="active">
+							<th>参数名</th>
+							<th>类型</th>
+							<th>是否必须</th>
+							<th>描述</th>
+							<th>示例值</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>qq</td>
+							<td>String</td>
+							<td>是</td>
+							<td>你要查询的QQ号</td>
+							<td>3599530552</td>
+						</tr>
+						
+						<td>method</td>
+							<td>String</td>
+							<td>否</td>
+							<td>专门为不方便解析json的朋友准备的</td>
+							<td>text</td>
+						</tr>
+						
+						<td>mod</td>
+							<td>String</td>
+							<td>是</td>
+							<td>你要执行的操作，只支持查询！</td>
+							<td>cha</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+
+			<div class="section">
+				<h6 class="pre_tit">文本回调返回结果示例</h6>
+				<pre><code>qq:3599530552<br>mobile:15241131833</code></pre>
+				<h6 class="pre_tit">JSON回调返回结果示例</h6>
+				<pre><code>{
+    "code": 200,
+    "msg": "ok",
+    "data": {
+        "qq": "3599530552",
+        "mobile": "15241131833"
+    }
+}</code></pre>
+			</div>
+
+			<h5 class="section_title">请求示例</h5>
+			<div class="section">
+				<h6 class="pre_tit">PHP调用代码</h6>
+				<pre>				<code>$qq = '3599530552';</code>
+				<code id="php">$api_url = 'http://api.tzact.com/qb-api.php?method=text&mod=cha&qq='.$qq;</code>
+				<code>$message = file_get_contents($api_url);</code>
+				<code>echo $message;</code>
+            </pre>
+			</div>
+			<div class="section">
+				<h6 class="pre_tit">JAVA调用代码</h6>
+				<pre>				 <code>public static void main(String path[]) throws Exception {</code>
+				 <code id="java">	URL u = new URL("http://api.tzact.com/qb-api.php?method=text&mod=cha&qq=3599530552");</code>
+				 <code>	InputStream in = u.openStream();</code>
+				 <code>	ByteArrayOutputStream out = new ByteArrayOutputStream();</code>
+				 <code>	try {</code>
+				 <code>		byte buf[] = new byte[1024];</code>
+				 <code>		int read = 0;</code>
+				 <code>		while ((read = in .read(buf)) &gt; 0) {</code>
+				 <code>			out.write(buf, 0, read);</code>
+				 <code>		}</code>
+				 <code>	} finally {</code>
+				 <code>		if ( in != null) {</code>
+				 <code>			in .close();</code>
+				 <code>		}</code>
+				 <code>	}</code>
+				 <code>	byte b[] = out.toByteArray();</code>
+				 <code>	System.out.println(new String(b, "utf-8"));</code>
+				 <code>}</code>
+            </pre>
+			</div>
+			<div class="section">
+				<h6 class="pre_tit">python调用代码</h6>
+				<pre>				<code>import urllib, urllib2, sys</code>
+				<code id="py">host = 'http://api.tzact.com'</code>
+				<code>path = '/qb-api.php'</code>
+				<code>method = 'GET'</code>
+				<code>querys = 'method=text&mod=cha&qq=3599530552'</code>
+				<code>bodys = {}</code>
+				<code>url = host + path + '?' + querys</code>
+				<code>request = urllib2.Request(url)</code>
+				<code>response = urllib2.urlopen(request)</code>
+				<code>content = response.read()</code>
+				<code>if (content):</code>
+				<code>print(content)</code>
+            </pre>
+			</div>
+		</div>
+	</div>
+
+	<script src="/assets/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script>tips();</script>
+
+
+</body></html>
